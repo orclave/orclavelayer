@@ -1,4 +1,6 @@
 import React from 'react';
+import { supabase } from '../lib/supabase';
+import './Modals.css';
 import './Modals.css';
 
 export default function Modals({ activeModal, onClose, onSwitchModal, onLogin }) {
@@ -98,11 +100,22 @@ function SignInModal({ onClose, onSwitch, onLogin }) {
         }, 1000);
     };
 
-    const handleSocialLogin = (provider) => {
+    const handleSocialLogin = async (provider) => {
         setIsConnecting(provider);
-        setTimeout(() => {
-            if (onLogin) onLogin();
-        }, 1500);
+        try {
+            const { data, error } = await supabase.auth.signInWithOAuth({
+                provider: provider,
+                options: {
+                    redirectTo: window.location.origin
+                }
+            });
+            if (error) throw error;
+            // The redirect handles the actual login state transition once it bounces back
+        } catch (error) {
+            console.error('Error logging in:', error.message);
+            alert(`Failed to connect with ${provider}: ${error.message}`);
+            setIsConnecting(null);
+        }
     };
 
     return (

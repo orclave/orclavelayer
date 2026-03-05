@@ -12,10 +12,35 @@ import Modals from './components/Modals';
 import DemoModal from './components/DemoModal';
 import DocsModal from './components/DocsModal';
 import Dashboard from './components/Dashboard';
+import { supabase } from './lib/supabase';
 
 export default function App() {
   const [activeModal, setActiveModal] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        setIsAuthenticated(true);
+        setUser(session.user);
+      }
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session) {
+        setIsAuthenticated(true);
+        setUser(session.user);
+        setActiveModal(null);
+        window.scrollTo({ top: 0 });
+      } else {
+        setIsAuthenticated(false);
+        setUser(null);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -74,17 +99,24 @@ export default function App() {
             activeModal={activeModal}
             onClose={() => setActiveModal(null)}
             onSwitchModal={setActiveModal}
-            onLogin={() => {
-              setIsAuthenticated(true);
-              setActiveModal(null);
-              window.scrollTo(0, 0);
+            onLogin={async () => {
+              // The actual login state is now handled by the supabase onAuthStateChange listener
+              // This is just a fallback for the email/password simulation if needed
             }}
           />
           <DemoModal activeModal={activeModal} onClose={() => setActiveModal(null)} />
           <DocsModal activeModal={activeModal} onClose={() => setActiveModal(null)} />
         </>
       ) : (
-        <Dashboard onLogout={() => setIsAuthenticated(false)} />
+        <Dashboard
+          onLogout={async () => {
+            await supabase.auth.signOut();
+            setIsAuthenticated(false);
+            setUser(null);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          user={user}
+        />
       )}
     </div>
   );
