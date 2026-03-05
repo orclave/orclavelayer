@@ -12,8 +12,8 @@ export default function Footer({ onNavigate, onOpenModal }) {
                 <div className="footer-copy">© 2025 Orclave Layer. All rights reserved.</div>
             </div>
             <div className="footer-links">
-                <a onClick={() => onOpenModal('privacy-modal')}>Privacy</a>
-                <a onClick={() => onOpenModal('terms-modal')}>Terms</a>
+                <a href="/privacy">Privacy</a>
+                <a href="/terms">Terms</a>
                 <a onClick={() => onNavigate('security')}>Security</a>
                 <a href="/docs">Docs</a>
                 <a href="https://x.com/OrclaveLayer" target="_blank" rel="noopener noreferrer">Twitter / X</a>
