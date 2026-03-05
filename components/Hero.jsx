@@ -8,7 +8,9 @@ export default function Hero({ onOpenDemo, onOpenEarlyAccess }) {
             <div className="hero-glow"></div>
             <div className="hero-inner">
                 <div className="badge fade-up">
-                    <div className="badge-dot"></div>Now in Private Beta · Non-Custodial
+                    <span className="badge-text" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <div className="badge-dot"></div>Secure & Autonomous · On-Chain
+                    </span>
                 </div>
                 <h1 className="fade-up delay-1">
                     The Security Layer<br />Your <em>AI Agents</em><br />Actually Need
