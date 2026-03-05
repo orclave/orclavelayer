@@ -81,36 +81,27 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Use Cases
 
-### 🤖 Autonomous Trading Agents
-An AI trading agent is authorized to execute swaps on your behalf — but only up to $500 per trade, only on whitelisted DEXs, and never between 2–6 AM. Any trade exceeding the limit is queued for your approval before it broadcasts.
+### 🤖 AI Procurement Agents
+An AI agent tasked with purchasing SaaS subscriptions and cloud infrastructure. Instead of giving the agent a corporate credit card, you issue an Orclave Virtual Card restricted strictly to the `Software` and `Cloud Services` merchant categories, with a hardware-enforced limit of $500/month.
 
-### 🛒 E-commerce Procurement Bots
-Your purchasing agent can autonomously restock inventory using a virtual card — but only with approved vendors, with a $5,000 monthly cap, and purchases automatically expire after 30 days if unused.
+### 📈 Autonomous Trading Bots
+A DeFi trading bot executing hundreds of transactions per minute on Uniswap. The agent operates freely until it attempts a transaction exceeding 5% of the portfolio's total value, at which point Orclave Layer automatically intercepts the call and requires multi-sig human approval.
 
-### 🏢 Enterprise Agent Fleets
-A company deploys 50 AI agents, each with isolated virtual cards and wallet scopes. Finance can audit every transaction across all agents from a single dashboard, with no access to private keys.
-
-### 🧪 Research & Experimentation
-A research agent runs DeFi strategies autonomously in a sandboxed environment. Gains are re-invested; losses are capped at a daily budget. No human oversight needed for routine operations — but the audit trail is always available.
+### 🚕 AI Ride-Hailing & Logistics
+An autonomous logistics agent booking rides or freight. Orclave enforces time-based gates so the agent can only spend funds during business hours (9 AM - 5 PM) and blocks any transactions requested from untrusted IPs.
 
 ---
 
 ## FAQ
 
-**Q: Does Orclave ever hold my private keys?**
-No. Orclave Layer is architecturally non-custodial — your private keys are never transmitted to or stored by Orclave. This is a cryptographic guarantee, not a policy choice.
+**Q: Does my agent need to be rewritten to use Orclave?**  
+No. Orclave acts as a drop-in RPC provider or API middleware. Your agent simply routes its existing Web3 transactions or API calls through Orclave instead of directly to the network.
 
-**Q: What chains does Orclave support?**
-Orclave supports EVM-compatible chains (Ethereum, Base, Arbitrum, Polygon, etc.), Solana, and major DeFi protocols natively. More integrations are added regularly.
+**Q: Do you hold my crypto or fiat?**  
+No. For Web3, Orclave uses non-custodial smart accounts where you retain full ownership. For fiat, we partner with licensed banking providers who hold funds while Orclave manages the logic layer.
 
-**Q: What happens if an agent tries to exceed a spending limit?**
-The transaction is blocked before it reaches the blockchain. Depending on your configuration, the agent receives an error, or the transaction is queued for manual approval.
-
-**Q: Can I set different rules for different agents?**
-Yes. Each agent gets its own wallet and/or virtual card with independent policies. You can group agents under shared policies or configure each one individually.
-
-**Q: Is Orclave audited?**
-Security audits are in progress ahead of mainnet launch. Our infrastructure is SOC 2 Type II compliant and all data is encrypted in transit (TLS 1.3) and at rest (AES-256).
+**Q: What happens if an agent goes rogue?**  
+Your predefined rules act as an immutable fail-safe. Even if the agent's LLM hallucinates and attempts to drain the wallet, the Orclave Rules Engine will block the transaction because it violates the maximum transaction limit you configured.
 
 ---
 
