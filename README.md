@@ -8,12 +8,10 @@
 
 Set limits. Enforce rules. Safeguard assets — without sacrificing agent autonomy.
 
-[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org)
-[![Supabase](https://img.shields.io/badge/Auth-Supabase-3ECF8E?style=flat-square&logo=supabase)](https://supabase.com)
-
 </div>
 
 ---
+
 
 ## Overview
 
