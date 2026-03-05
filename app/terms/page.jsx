@@ -8,7 +8,7 @@ import '../../app/docs/Docs.css';
 export default function TermsPage() {
     return (
         <div className="app-container">
-            <Navbar onNavigate={(path) => window.location.href = `/#${path}`} onOpenModal={() => { }} />
+            <Navbar onNavigate={(path) => { window.location.href = path === 'top' ? '/' : `/#${path}` }} onOpenModal={() => { }} />
 
             <main style={{ minHeight: '80vh', padding: '120px 20px', display: 'flex', justifyContent: 'center' }}>
                 <div style={{ width: '100%', maxWidth: '640px', background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: '16px', padding: '32px 36px' }}>
@@ -45,7 +45,7 @@ export default function TermsPage() {
                 </div>
             </main>
 
-            <Footer onNavigate={(path) => window.location.href = `/#${path}`} onOpenModal={() => { }} />
+            <Footer onNavigate={(path) => { window.location.href = path === 'top' ? '/' : `/#${path}` }} onOpenModal={() => { }} />
         </div>
     );
 }
