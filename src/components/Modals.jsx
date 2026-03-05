@@ -1,7 +1,7 @@
 import React from 'react';
 import './Modals.css';
 
-export default function Modals({ activeModal, onClose, onSwitchModal }) {
+export default function Modals({ activeModal, onClose, onSwitchModal, onLogin }) {
     if (!activeModal) return null;
 
     const handleOverlayClick = (e) => {
@@ -14,7 +14,7 @@ export default function Modals({ activeModal, onClose, onSwitchModal }) {
                 <EarlyAccessModal onClose={onClose} onSwitch={() => onSwitchModal('signin-modal')} />
             )}
             {activeModal === 'signin-modal' && (
-                <SignInModal onClose={onClose} onSwitch={() => onSwitchModal('early-access-modal')} />
+                <SignInModal onClose={onClose} onSwitch={() => onSwitchModal('early-access-modal')} onLogin={onLogin} />
             )}
             {activeModal === 'privacy-modal' && <PrivacyModal onClose={onClose} />}
             {activeModal === 'terms-modal' && <TermsModal onClose={onClose} />}
@@ -87,12 +87,10 @@ function EarlyAccessModal({ onClose, onSwitch }) {
     );
 }
 
-function SignInModal({ onClose, onSwitch }) {
+function SignInModal({ onClose, onSwitch, onLogin }) {
     const handleSubmit = (e) => {
         e.preventDefault();
-        onClose();
-        // Pseudo-toast message simulation, ideal is a toast provider
-        alert('🔐 Sign in available at full launch!');
+        if (onLogin) onLogin();
     };
 
     return (

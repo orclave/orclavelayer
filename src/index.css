@@ -20,6 +20,8 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 110%;
+  /* Scales up the whole UI easily like a browser zoom */
 }
 
 body {

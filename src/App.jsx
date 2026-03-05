@@ -11,9 +11,11 @@ import Footer from './components/Footer';
 import Modals from './components/Modals';
 import DemoModal from './components/DemoModal';
 import DocsModal from './components/DocsModal';
+import Dashboard from './components/Dashboard';
 
 export default function App() {
   const [activeModal, setActiveModal] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -52,27 +54,38 @@ export default function App() {
 
   return (
     <div className="app-container">
-      <Navbar onNavigate={handleNavigate} onOpenModal={setActiveModal} />
+      {!isAuthenticated ? (
+        <>
+          <Navbar onNavigate={handleNavigate} onOpenModal={setActiveModal} />
 
-      <main>
-        <Hero onOpenDemo={setActiveModal} onOpenEarlyAccess={setActiveModal} />
-        <Features />
-        <HowItWorks />
-        <Security />
-        <Developer />
-        <Pricing onOpenEarlyAccess={setActiveModal} />
-        <CTA onOpenDocs={setActiveModal} onOpenEarlyAccess={setActiveModal} />
-      </main>
+          <main>
+            <Hero onOpenDemo={setActiveModal} onOpenEarlyAccess={setActiveModal} />
+            <Features />
+            <HowItWorks />
+            <Security />
+            <Developer />
+            <Pricing onOpenEarlyAccess={setActiveModal} />
+            <CTA onOpenDocs={setActiveModal} onOpenEarlyAccess={setActiveModal} />
+          </main>
 
-      <Footer onNavigate={handleNavigate} onOpenModal={setActiveModal} />
+          <Footer onNavigate={handleNavigate} onOpenModal={setActiveModal} />
 
-      <Modals
-        activeModal={activeModal}
-        onClose={() => setActiveModal(null)}
-        onSwitchModal={setActiveModal}
-      />
-      <DemoModal activeModal={activeModal} onClose={() => setActiveModal(null)} />
-      <DocsModal activeModal={activeModal} onClose={() => setActiveModal(null)} />
+          <Modals
+            activeModal={activeModal}
+            onClose={() => setActiveModal(null)}
+            onSwitchModal={setActiveModal}
+            onLogin={() => {
+              setIsAuthenticated(true);
+              setActiveModal(null);
+              window.scrollTo(0, 0);
+            }}
+          />
+          <DemoModal activeModal={activeModal} onClose={() => setActiveModal(null)} />
+          <DocsModal activeModal={activeModal} onClose={() => setActiveModal(null)} />
+        </>
+      ) : (
+        <Dashboard onLogout={() => setIsAuthenticated(false)} />
+      )}
     </div>
   );
 }
