@@ -1,0 +1,136 @@
+.pricing-section {
+    position: relative;
+    background: var(--bg);
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+    align-items: center;
+}
+
+.pricing-card {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 20px;
+    padding: 40px 32px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.pricing-card.popular {
+    background: linear-gradient(180deg, var(--bg3) 0%, var(--bg2) 100%);
+    border: 1px solid rgba(201, 168, 76, 0.4);
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.popular-badge {
+    position: absolute;
+    top: -12px;
+    right: 32px;
+    background: var(--gold);
+    color: #000;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 4px 12px;
+    border-radius: 12px;
+}
+
+.pricing-header h3 {
+    font-size: 20px;
+    color: var(--text);
+    margin-bottom: 16px;
+}
+
+.price {
+    font-family: 'Syne', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    line-height: 1;
+}
+
+.price span {
+    font-size: 16px;
+    color: var(--text-muted);
+    font-weight: 400;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.pricing-header p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    line-height: 1.6;
+}
+
+.pricing-features {
+    list-style: none;
+    margin-bottom: 40px;
+    flex-grow: 1;
+}
+
+.pricing-features li {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pricing-features li::before {
+    content: '✓';
+    color: var(--gold);
+    font-weight: 700;
+}
+
+.btn-pricing {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--border2);
+    color: var(--text);
+}
+
+.btn-outline:hover {
+    border-color: var(--text);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-solid {
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    color: #000;
+}
+
+.btn-solid:hover {
+    background: #E5C365;
+    border-color: #E5C365;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+    .pricing-card.popular {
+        transform: scale(1);
+    }
+}
