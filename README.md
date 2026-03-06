@@ -60,7 +60,7 @@ Flag high-value or unusual transactions before they execute. Your team receives 
 Every action your agent takes is logged immutably. See the full history of approvals, rejections, amounts, timestamps, and addresses — all in one dashboard.
 
 ### 🔗 Native DeFi Integrations
-Orclave Layer works across EVM-compatible chains, Solana, and major DeFi protocols out of the box. No custom adapters required.
+Orclave Layer works across EVM-compatible chains, and major DeFi protocols out of the box. No custom adapters required.
 
 ---
 
